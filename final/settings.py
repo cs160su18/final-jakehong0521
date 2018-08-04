@@ -25,7 +25,7 @@ SECRET_KEY = 'of*1_dbynim*6(&%xz8wr=*m(9^gajajk8^i)k-0wfa7j-s-(('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["final-jakehong0521-jakehong0521206332.codeanyapp.com"]
 
 
 # Application definition
