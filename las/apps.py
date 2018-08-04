@@ -1,4 +1,5 @@
 from django.apps import AppConfig
 
-class LifeConfig(AppConfig):
-    name = 'life'
+
+class LasConfig(AppConfig):
+    name = 'las'
