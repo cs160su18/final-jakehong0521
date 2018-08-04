@@ -1,10 +1,9 @@
 {% load static %}
-
 <!DOCTYPE html>
 
 <html>
 	<head>
-    <title>Life as Someone Else</title>
+    <title>Category</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static '/las/vendor/bootstrap/css/bootstrap.css' %}" />
@@ -24,12 +23,12 @@
   <body>
     
     <div class="navigator">
-      <a href="{% url 'index' %}" class="active">LAS</a>
-      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'index' %}">LAS</a>
+      <a href="{% url 'category' %}" class="active">Category</a>
       <a href="{% url 'myCollections' %}">My Collections</a>
     </div>
     
-    <h1>This is Home View</h1>
+    <h1>This is Category View</h1>
     
     <script>
     </script>
