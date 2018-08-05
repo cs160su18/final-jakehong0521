@@ -4,7 +4,6 @@ from django.core import serializers
 from las.models import *
 from django.contrib.auth import (
 authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm
 import json
 
 # Create your views here.
@@ -20,17 +19,11 @@ def myCollections(request):
 def posting(request):
   return render(request, 'las/posting.html')
 
-# testing user registration
+def guide(request):
+  return render(request, 'las/guide.html')
 
-def login_view(request):
-  form = UserLoginForm(request.POST or None)
-  if form.is_valid():
-    username = form.cleaned_data.get('username')
-    password = form.cleaned_data.get('password')
-  return render(request, 'form.html', {'form':form})
+def search(request):
+  return render(request, 'las/search.html')
 
-def logout_view(request):
-  return render(request, 'form.html', {})
-
-def register_view(request):
-  return render(request, 'form.html', {})
+def login(request):
+  return render(request, 'las/login.html')

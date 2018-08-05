@@ -1,0 +1,31 @@
+body{
+  margin:0
+}
+
+.navigator{
+	overflow: hidden;
+	background-color: #062743;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+.navigator a {
+	float: right;
+	color: white;
+	text-align: center;
+	padding: 20px 15px;
+	font-size: 15px;
+  text-decoration:none;
+}
+.navigator #logo {
+  float:left;
+  background-color: #062743; 
+  font-size:15px;
+  width: 200px;
+}
+.navigator a:hover {
+	background-color: #113A5D;
+	
+}
+.navigator a.active {
+	background-color: #113A5D;
+}

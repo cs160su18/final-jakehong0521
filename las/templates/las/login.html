@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<!--     <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    
+    <div class="form">
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Please fill in this form to create an account.</h1>
+          <form action="/" method="post">
+
+            <div class="top-row">  
+              <div class="field-wrap">
+                <label for="First Name">First Name *</label>
+                <input type="text" name="First Name" required>
+              </div>
+
+              <div class="field-wrap">
+                <label for="Last Name">Last Name *</label>
+                <input type="text" name="Last Name" required>
+              </div>
+            </div>
+
+            <div class="field-wrap">
+              <label for="Username">Username *</label>
+              <input type="text" name="Username" required>
+            </div>
+
+            <div class="field-wrap">
+              <label for="Password">Password *</label>
+              <input type="password" name="Password" required>
+            </div>
+
+            <label>Choose an option </label>
+            <div class="styled-select blue semi-square">
+              <select>
+                <option value="0">Select category </option>
+                <option value="1">N/A</option>
+                <option value="2">Administration</option>
+                <option value="3">Banking</option>
+                <option value="4">Design</option>
+                <option value="5">Education</option>
+                <option value="6">Education</option>
+                <option value="7">Engineering</option>
+                <option value="8">Entrepreneur</option>
+                <option value="9">Government</option>
+                <option value="10">Health</option>
+                <option value="11">Legal</option>
+                <option value="12">Media</option>
+                <option value="13">Research</option>
+                <option value="14">Sales</option>
+              </select>
+            </div>
+
+            <button class="button button-block"><b>Sign Up</b></button>
+          </form>
+        </div>
+
+        <div id="login">
+          <h1>Welcome Back!</h1>
+          <form action="/" method="post">
+
+            <div class="field-wrap">
+              <label for="Username">Username *</label>
+              <input type="text" name="Username" required>
+            </div>
+
+            <div class="field-wrap">
+              <label for="Password">Password *</label>
+              <input type="password" name="Password" required>
+            </div>    
+
+            <button class="button button-block">
+              <b>Log In</b>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+    <style type='text/css'>
+      @import "compass/css3";
+      
+      *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.form {
+  background:#0b678c;
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:15px;
+}
+
+.tab-group {
+  list-style:none;
+  padding:0;
+  margin:0 0 40px 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  li a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    background:rgba(#a0b3b0,.25);
+    color:#a0b3b0;
+    font-size:20px;
+    float:left;
+    width:50%;
+    text-align:center;
+    border-radius:5px;
+    cursor:pointer;
+    transition:.5s ease;
+    &:hover {
+      background:darken(#4e95bc,5%);
+      color:white;
+    }
+  }
+  .active a {
+    background:#4e95bc;
+    color:white;
+  }
+}
+
+.tab-content > div:last-child {
+  display:none;
+}
+
+h1 {
+  text-align:center;
+  color:white;
+  margin:0 0 40px;
+  font-size:22px;
+}
+
+label {
+  font-family:'Titillium Web', sans-serif;
+  color:white;
+  font-size:19px;
+}
+
+input {
+  font-family: 'Titillium Web', sans-serif;
+  font-size:16px;
+  display:block;
+  width:100%;
+  height:100%;
+  margin-top: 7px;
+  padding:5px 10px;
+  background:none;
+  background-image:none;
+  border:1px solid #a0b3b0;
+  color:white;
+  border-radius:5px;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  &:focus {
+		outline:0;
+		border-color:#4e95bc;
+  }
+}
+
+.field-wrap {
+  position:relative;
+  margin-bottom:10px;
+}
+
+.top-row {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  > div {
+    float:left;
+    width:48%;
+    margin-right:4%;
+    &:last-child { 
+      margin:0;
+    }
+  }
+}
+
+.button {
+  border:0;
+  outline:none;
+  padding:15px 0;
+  background:#4e95bc;
+  color:white;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    background:darken(#4e95bc,5%);
+  }
+}
+
+.button-block {
+  display:block;
+  width:100%;
+  border-radius:5px;
+  font-size:22px;
+  font-family: 'Titillium Web', sans-serif;
+  margin-top: 30px;
+}
+
+.styled-select {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 98% 0;
+  height: 35px;   
+  overflow: hidden;
+  width: 100%;
+  border-radius:5px;   
+  margin-top: 7px;
+  border:1px solid #a0b3b0;
+}
+
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-family: 'Titillium Web', sans-serif;
+  height: 33px;
+  width: 110%;
+}
+
+/* .blue select { background-color: #fff; } */
+
+    </style>
+    
+    <script>
+    $('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+
+    </script>
+
+    
+
+
+  </body>
+</html>

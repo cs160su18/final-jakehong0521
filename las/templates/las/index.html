@@ -1,38 +1,109 @@
 {% load static %}
-
 <!DOCTYPE html>
-
 <html>
-	<head>
-    <title>Life as Someone Else</title>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+  <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
 
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static '/las/vendor/bootstrap/css/bootstrap.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static '/las/css/main.css' %}" />
+  <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  <style type="text/css">
+    
+    body {
+      background-image: url('https://static1.squarespace.com/static/56be9c253c44d89a5812c78c/t/5b22f25d6d2a737c4e2dc116/1529016959565/work-team-medium.jpg?format=1500w');
+    }
+    
+    .main{
+      text-align:center;
+    }
+    
+    .main h1{
+      font-size:60px;
+    }
+    .main input[type='text']{
+      width:500px;
+    }
+    
+    #feature {
+/*       white-space:nowrap; */
+      text-align:center;
+    }
+    
+    #feature div {
+      display:inline-block;
+      height:200px;
+      width:200px;
+      border-style: solid;
+      border-width: 5px;
+      border-color: #FD5F00;
+    }
+    
+    #feature #first {
+      margin: 30px 15px;
+    }
+    #feature #second {
+      margin: 30px 15px;
+    }
+    #feature #third {
+      margin: 30px 15px;
+    }
+    
+  </style>
+</head>
 
-		<script src="{% static '/las/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/las/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
-    
-    <script type='text/javascript'>
-    </script>
-    
-    <style>
-    </style>
-    
-	</head>
-	
-  <body>
-    
-    <div class="navigator">
-      <a href="{% url 'index' %}" class="active">LAS</a>
-      <a href="{% url 'category' %}">Category</a>
-      <a href="{% url 'myCollections' %}">My Collections</a>
+<body>
+	<div class="navigator">
+    <a href="{% url 'login' %}">Sign Up / Login</a>
+    <a href="{% url 'myCollections' %}">My Collections</a>
+    <a href="{% url 'category' %}">Category</a>
+    <a href="{% url 'guide' %}">User Guide</a>
+    <div id="logo">
+      <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
     </div>
+	</div>
+  
+  <div class="main">
+    <h1>
+      Life As Someone Else
+    </h1>
+    <h3>
+      Everyone has a story to tell, <br>
+      what's your story?
+    </h3>
     
-    <h1>This is Home View</h1>
-    
-    <script>
-    </script>
-    
-	</body>
+     <input type="text" placeholder="Search..">
+    <button type="submit"><i class="fa fa-search"></i>Search</button>
+  </div>
+  
+  <section id="feature">
+    <div id="first">
+      <h3>
+        Master Paw
+      </h3>
+      <h4>
+        Master <br>
+        Home Inc.
+      </h4>
+    </div>
+    <div id="second">
+      <h3>
+        Kevin Bacon
+      </h3>
+      <h4>
+        Software Engineer <br>
+        Google
+      </h4>
+    </div>
+    <div id="third">
+      <h3>
+        Domo Kun
+      </h3>
+      <h4>
+        Actor <br>
+        NHK
+      </h4>
+    </div>
+  </section>
+</body>
 </html>
