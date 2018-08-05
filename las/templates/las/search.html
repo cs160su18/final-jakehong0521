@@ -16,12 +16,28 @@
     <div class="navigator">
       <a href="{% url 'login' %}">Sign Up / Login</a>
       <a href="{% url 'myCollections' %}">My Collections</a>
-      <a href="{% url 'search' %}" class ="active">Category</a>
+      <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>
       <div id="logo">
         <a href="{% url 'index' %}" id="logo">LAS</a>
       </div>
     </div>
+    
+    <br>
+    <div class="main">
+      <input type="text" placeholder="Search...">
+      <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
+    </div>
+    
+    <style>
+      .main {
+        text-align:center;
+      }
+      
+      .main input[type='text'] {
+        width:500px;
+      }
+    </style>
 
   </body>
 </html>

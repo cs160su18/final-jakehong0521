@@ -23,12 +23,16 @@
   <body>
     
     <div class="navigator">
-      <a href="{% url 'index' %}">LAS</a>
+      <a href="{% url 'login' %}">Sign Up / Login</a>
+      <a href="{% url 'myCollections' %}">My Collections</a>
       <a href="{% url 'category' %}">Category</a>
-      <a href="{% url 'myCollections' %}" class="active">My Collections</a>
+      <a href="{% url 'guide' %}">User Guide</a>
+      <div id="logo">
+        <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+      </div>
     </div>
     
-    <h1>This is Category View</h1>
+    <h1>This is My Collections View</h1>
     
     <script>
     </script>

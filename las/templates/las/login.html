@@ -13,6 +13,14 @@
   </head>
   <body>
     
+    <a href="{% url 'login' %}">Sign Up / Login</a>
+    <a href="{% url 'myCollections' %}">My Collections</a>
+    <a href="{% url 'category' %}">Category</a>
+    <a href="{% url 'guide' %}">User Guide</a>
+    <div id="logo">
+      <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+    </div>
+    
     <div class="form">
       <ul class="tab-group">
         <li class="tab active"><a href="#signup">Sign Up</a></li>
