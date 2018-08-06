@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["final-jakehong0521-jakehong0521206332.codeanyapp.com"]
 # Application definition
 
 INSTALLED_APPS = [
-  'las',
+  'las.apps.LasConfig',
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',

@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
@@ -8,5 +9,7 @@ urlpatterns = [
   path('guide/', views.guide, name='guide'),
   path('login/', views.login, name='login'),
   path('search/', views.search, name='search'),
-  path('myCollections/', views.myCollections, name='myCollections')
+  path('myCollections/', views.myCollections, name='myCollections'),
+  
+  url(r'^register/$', views.UserFormView.as_view(), name='register')
 ]

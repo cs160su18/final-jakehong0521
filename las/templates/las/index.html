@@ -11,7 +11,9 @@
   <style type="text/css">
     
     body {
-      background-image: url('https://static1.squarespace.com/static/56be9c253c44d89a5812c78c/t/5b22f25d6d2a737c4e2dc116/1529016959565/work-team-medium.jpg?format=1500w');
+      background-image: url("../static/css/background.png");
+      background-repeat:no-repeat;
+      background-size:cover;
     }
     
     .main{
@@ -21,6 +23,7 @@
     .main h1{
       font-size:60px;
     }
+    
     .main input[type='text']{
       width:500px;
     }
@@ -31,79 +34,112 @@
     }
     
     #feature div {
-      display:inline-block;
-      height:200px;
-      width:200px;
-      border-style: solid;
-      border-width: 5px;
-      border-color: #FD5F00;
+      background-color:#FFFFFF;
     }
     
     #feature #first {
-      margin: 30px 15px;
-    }
-    #feature #second {
-      margin: 30px 15px;
-    }
-    #feature #third {
-      margin: 30px 15px;
+      margin: 60px 15px;
+      display:inline-block;
+      height:120px;
+      width:250px;
+      border-style: solid;
+      border-width: 5px;
+      border-color: #FD5F00;
+      border-radius: 10px;
     }
     
+    #feature #second {
+      margin: 60px 15px;
+      display:inline-block;
+      height:120px;
+      width:250px;
+      border-style: solid;
+      border-width: 5px;
+      border-color: #FD5F00;
+      border-radius: 10px;
+    }
+    
+    #feature #third {
+      margin: 60px 15px;
+      display:inline-block;
+      height:120px;
+      width:250px;
+      border-style: solid;
+      border-width: 5px;
+      border-color: #FD5F00;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
-<body>
-	<div class="navigator">
-    <a href="{% url 'login' %}">Sign Up / Login</a>
-    <a href="{% url 'myCollections' %}">My Collections</a>
-    <a href="{% url 'category' %}">Category</a>
-    <a href="{% url 'guide' %}">User Guide</a>
-    <div id="logo">
-      <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
-    </div>
-	</div>
-  
-  <div class="main">
-    <h1>
-      Life As Someone Else
-    </h1>
-    <h3>
-      Everyone has a story to tell, <br>
-      what's your story?
-    </h3>
+  <body>
     
-    <input type="text" placeholder="Search...">
-    <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
-  </div>
+    <div class="navigator">
+      <a href="{% url 'login' %}">Sign Up / Login</a>
+      <a href="{% url 'myCollections' %}">My Collections</a>
+      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'guide' %}">User Guide</a>
+      <div id="logo">
+        <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
+      </div>
+    </div>
   
-  <section id="feature">
-    <div id="first">
+    <div class="main">
+      <h1>
+        Life As Someone Else
+      </h1>
       <h3>
-        Master Paw
+        Everyone has a story to tell, <br>
+        what's your story?
       </h3>
-      <h4>
-        Master <br>
-        Home Inc.
-      </h4>
+
+      <input type="text" placeholder="Search...">
+      <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
     </div>
-    <div id="second">
-      <h3>
-        Kevin Bacon
-      </h3>
-      <h4>
-        Software Engineer <br>
-        Google
-      </h4>
-    </div>
-    <div id="third">
-      <h3>
-        Domo Kun
-      </h3>
-      <h4>
-        Actor <br>
-        NHK
-      </h4>
-    </div>
-  </section>
-</body>
+  
+    <section id="feature">
+      <div id="first">
+        <div style="float: left; width: 50%;">
+          <img src="https://lh3.googleusercontent.com/jUL9oOVW6tFLMKRVlIGJCQgRAcruRcbXwvoDL33uGAen8YPW-vNJBquEyg_7F60eB7kdWNU=s135" style="height: 100%;">  
+        </div>
+        <div style="float: right; width: 50%;">
+          <h3>
+            Master Paw
+          </h3>
+          <h4>
+            Master <br>
+            Home Inc.
+          </h4>
+        </div>
+      </div>
+      <div id="second">
+        <div style="float:left; width: 40%; height:100%">
+          <img src="https://lh3.googleusercontent.com/igsAgts4NCiWjewagOFo4eymGWNnklXLCeB_J-wm1G2sbFwNlU2evIXgOegSjbQrCrT3RHE=s85" style="width: 100%;">
+        </div>
+        <div style="float: right; width: 60%;">
+          <h3>
+            Kevin Bacon
+          </h3>
+          <h4>
+            Software Engineer <br>
+            Google
+          </h4>
+        </div>
+      </div>
+      <div id="third">
+        <div style="float: left; width: 40%;">
+          <img src="https://lh3.googleusercontent.com/gO1xfrd-iXh7Jhw0lVYSEAox2pnrmHgKqD0vwfFwr4Wv-Lk_2jXr7HPeP3W5W5JwDKkc=s85" style="width: 100%;">
+        </div>
+        <div style="float: right; width: 60%;">
+          <h3>
+            Domo Kun
+          </h3>
+          <h4>
+            Actor <br>
+            NHK
+          </h4>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

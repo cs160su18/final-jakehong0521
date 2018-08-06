@@ -23,19 +23,51 @@
       </div>
     </div>
     
-    <br>
     <div class="main">
       <input type="text" placeholder="Search...">
-      <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
+      <button type="submit" onclick="location.href='../search/'"><i class="fa fa-search"></i>Search</button>
+      
+      <section id="feature">
+        <div id="second">
+          <div style="float:left; width: 40%; height:100%">
+            <img src="https://lh3.googleusercontent.com/igsAgts4NCiWjewagOFo4eymGWNnklXLCeB_J-wm1G2sbFwNlU2evIXgOegSjbQrCrT3RHE=s85" style="width: 100%;">
+          </div>
+          <div style="float: right; width: 60%;">
+            <h3>Kevin Bacon</h3>
+            <h4>Software Engineer <br>Google</h4>
+          </div>
+        </div>
+      </section>
+      
     </div>
     
     <style>
       .main {
-        text-align:center;
+        text-align: center;
+        padding-top: 100px;
       }
       
       .main input[type='text'] {
         width:500px;
+      }
+      
+      #feature {
+        text-align: left;
+      }
+
+      #feature div {
+        background-color:#FFFFFF;
+      }
+      
+      #feature #second {
+        margin: 60px 15px;
+        display: inline-block;
+        height: 120px;
+        width: 250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FD5F00;
+        border-radius: 10px;
       }
     </style>
 
