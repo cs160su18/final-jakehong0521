@@ -4,31 +4,22 @@
 <html>
 	<head>
     <title>Category</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
 
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
-
-		<script src="{% static '/las/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/las/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
-    
-    <script type='text/javascript'>
-    </script>
-    
-    <style>
-    </style>
-    
+    <script src="{% static '/las/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/las/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
 	</head>
 	
   <body>
-    
     <div class="navigator">
       {% if user.is_authenticated %}
         <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
       {% else %}
-        <a href="{% url 'register' %}">Sign Up / Login</a>
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
       {% endif %}
       <a href="{% url 'myCollections' %}">My Collections</a>
-      <a href="{% url 'category' %}" class ="active">Category</a>
+      <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>
       <div id="logo">
         <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>

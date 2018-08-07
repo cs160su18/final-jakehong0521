@@ -19,7 +19,7 @@ def category(request):
 def myCollections(request):
   return render(request, 'las/myCollections.html')
 
-def posting(request):
+def post_making(request):
   return render(request, 'las/posting.html')
 
 def guide(request):
@@ -28,53 +28,55 @@ def guide(request):
 def search(request):
   return render(request, 'las/search.html')
 
+def signup(request):
+  print('####################')
+  print('signup post request')
+  userForm = UserForm(request.POST)
+  profileForm = ProfileForm(request.POST)
+  if (userForm.is_valid() and profileForm.is_valid()):
+    user = userForm.save(commit=False)
+    profile = profileForm.save(commit=False)
+    username = userForm.cleaned_data['username']
+    password = userForm.cleaned_data['password']
+    user.set_password(password)
+    user.save()
+    profile.user = user
+    profile.save()
+
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+      if user.is_active:
+        login(request, user)
+        print('created and signed in')
+        print(user)
+        print('########################')
+        print(profile)
+          
+  return render(request, 'las/index.html')
+
 def signin(request):
-  print('##########################')
-  print(request.method)
-  print(request)
-  return render(request, 'las/signin.html', {'userform': UserForm(None), 'profileform': ProfileForm(None)})
+  print('####################')
+  print('signin request')
+  username = request.POST['username']
+  password = request.POST['password']
 
-# testing
+  user = authenticate(username=username, password=password)
 
-class UserFormView(View):
-#   form_class = UserForm
-  user_form = UserForm
-  profile_form = ProfileForm
-  template_name = 'las/registration_form.html'
-  
-  def get(self, request):
-#     form = self.form_class(None)
-#     return render(request, self.template_name, {'form': form})
-    userForm = self.user_form(None)
-    profileForm = self.profile_form(None)
-    return render(request, self.template_name, {'userform': userForm, 'profileform': profileForm})
-  
-  def post(self, request):
-    userForm = self.user_form(request.POST)
-    profileForm = self.profile_form(request.POST)
-    if (userForm.is_valid() and profileForm.is_valid()):
-      user = userForm.save(commit=False)
-      profile = profileForm.save(commit=False)
-      username = userForm.cleaned_data['username']
-      password = userForm.cleaned_data['password']
-      user.set_password(password)
-      user.save()
-      profile.user = user
-      profile.save()
-      
-      user = authenticate(username=username, password=password)
-      
-      if user is not None:
-        if user.is_active:
-          login(request, user)
-          print('created and signed in')
-          print(user)
-          print('########################')
-          print(profile)
-    
-    return render(request, 'las/index.html')
+  if user is not None:
+    if user.is_active:
+      login(request, user)
+
+  return redirect('../')
+
+def signinup(request):
+  userForm = UserForm
+  profileForm = ProfileForm
+  print('####################')
+  print('signin get request')
+  return render(request, 'las/signinup.html', {'userform': UserForm(None), 'profileform': ProfileForm(None)})
 
 def logout_view(request):
   print('logout view')
   logout(request)
-  return render(request, 'las/category.html')
+  return render(request, 'las/logout_view.html')

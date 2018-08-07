@@ -1,23 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-  <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link type ="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
 
-  <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-  <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
-  
-</head>
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  </head>
 
   <body>
     <div class="navigator">
       {% if user.is_authenticated %}
         <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
       {% else %}
-        <a href="{% url 'register' %}">Sign Up / Login</a>
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
       {% endif %}
-      
       <a href="{% url 'myCollections' %}">My Collections</a>
       <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>

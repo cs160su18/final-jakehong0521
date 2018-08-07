@@ -10,12 +10,16 @@
   </head>
   <body>
     <div class="navigator">
-    <a href="{% url 'signin' %}">Sign Up / Login</a>
-    <a href="{% url 'myCollections' %}">My Collections</a>
-    <a href="{% url 'search' %}">Category</a>
-    <a href="{% url 'guide' %}" class ="active">User Guide</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
+      {% else %}
+        <a href="{% url 'signinup' %}">Sign Up / Login</a>
+      {% endif %}
+      <a href="{% url 'myCollections' %}">My Collections</a>
+      <a href="{% url 'category' %}">Category</a>
+      <a href="{% url 'guide' %}">User Guide</a>
       <div id="logo">
-        <a href="{% url 'index' %}" id="logo">LAS</a>
+        <a href="{% url 'index' %}" class ="active" id="logo">LAS</a>
       </div>
     </div>
     
