@@ -77,7 +77,7 @@
       {% if user.is_authenticated %}
         <a href="{% url 'index' %}">{{ user.username }}<br>Log Out</a>
       {% else %}
-        <a href="{% url 'login' %}">Sign Up / Login</a>
+        <a href="{% url 'register' %}">Sign Up / Login</a>
       {% endif %}
       
       <a href="{% url 'myCollections' %}">My Collections</a>
