@@ -8,74 +8,12 @@
   <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
   
-  <style type="text/css">
-    
-    body {
-      background-image: url("{% static 'css/background.png' %}");
-      background-repeat:no-repeat;
-      background-size:cover;
-    }
-    
-    .main{
-      text-align:center;
-    }
-    
-    .main h1{
-      font-size:60px;
-    }
-    
-    .main input[type='text']{
-      width:500px;
-    }
-    
-    #feature {
-/*       white-space:nowrap; */
-      text-align:center;
-    }
-    
-    #feature div {
-      background-color:#FFFFFF;
-    }
-    
-    #feature #first {
-      margin: 60px 15px;
-      display:inline-block;
-      height:120px;
-      width:250px;
-      border-style: solid;
-      border-width: 5px;
-      border-color: #FD5F00;
-      border-radius: 10px;
-    }
-    
-    #feature #second {
-      margin: 60px 15px;
-      display:inline-block;
-      height:120px;
-      width:250px;
-      border-style: solid;
-      border-width: 5px;
-      border-color: #FD5F00;
-      border-radius: 10px;
-    }
-    
-    #feature #third {
-      margin: 60px 15px;
-      display:inline-block;
-      height:120px;
-      width:250px;
-      border-style: solid;
-      border-width: 5px;
-      border-color: #FD5F00;
-      border-radius: 10px;
-    }
-  </style>
 </head>
 
   <body>
     <div class="navigator">
       {% if user.is_authenticated %}
-        <a href="{% url 'index' %}">{{ user.username }}<br>Log Out</a>
+        <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
       {% else %}
         <a href="{% url 'register' %}">Sign Up / Login</a>
       {% endif %}
@@ -145,5 +83,68 @@
         </div>
       </div>
     </section>
+    
+    <style type="text/css">
+      body {
+        background-image: url("{% static 'css/background.png' %}");
+        background-repeat:no-repeat;
+        background-size:cover;
+      }
+
+      .main{
+        text-align:center;
+      }
+
+      .main h1{
+        font-size:60px;
+      }
+
+      .main input[type='text']{
+        width:500px;
+      }
+
+      #feature {
+  /*       white-space:nowrap; */
+        text-align:center;
+      }
+
+      #feature div {
+        background-color:#FFFFFF;
+      }
+
+      #feature #first {
+        margin: 60px 15px;
+        display:inline-block;
+        height:120px;
+        width:250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FD5F00;
+        border-radius: 10px;
+      }
+
+      #feature #second {
+        margin: 60px 15px;
+        display:inline-block;
+        height:120px;
+        width:250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FD5F00;
+        border-radius: 10px;
+      }
+
+      #feature #third {
+        margin: 60px 15px;
+        display:inline-block;
+        height:120px;
+        width:250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FD5F00;
+        border-radius: 10px;
+      }
+    </style>
+    
   </body>
 </html>

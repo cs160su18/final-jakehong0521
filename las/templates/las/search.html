@@ -14,7 +14,11 @@
 
   <body>
     <div class="navigator">
-      <a href="{% url 'signin' %}">Sign Up / Login</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
+      {% else %}
+        <a href="{% url 'register' %}">Sign Up / Login</a>
+      {% endif %}
       <a href="{% url 'myCollections' %}">My Collections</a>
       <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>

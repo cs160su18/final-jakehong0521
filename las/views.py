@@ -10,7 +10,7 @@ import json
 
 # Create your views here.
 def index(request):
-  print(request.user)
+  print('index view with ' + request.user.__str__())
   return render(request, 'las/index.html')
 
 def category(request):
@@ -73,21 +73,8 @@ class UserFormView(View):
           print(profile)
     
     return render(request, 'las/index.html')
-#     form = self.form_class(request.POST)
-    
-    
-#     if form.is_valid():
-#       user = form.save(commit=False)
-#       username = form.cleaned_data['username']
-#       password = form.cleaned_data['password']
-#       user.set_password(password)
-#       user.save()
-      
-#       user = authenticate(username=username, password=password)
-      
-#       if user is not None:
-#         if user.is_active:
-#           login(request, user)
-#           return redirect('las:index')
-        
-#     return render(request, self.template_name, {'form': form})
+
+def logout_view(request):
+  print('logout view')
+  logout(request)
+  return render(request, 'las/category.html')

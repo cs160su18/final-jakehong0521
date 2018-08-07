@@ -11,7 +11,6 @@ urlpatterns = [
   path('search/', views.search, name='search'),
   path('myCollections/', views.myCollections, name='myCollections'),
   
-  
   path('register/', views.UserFormView.as_view(), name='register'),
-  path('logout/', views.index, name='logout')
+  path('logout_view/', views.logout_view, name='logout_view')
 ]
