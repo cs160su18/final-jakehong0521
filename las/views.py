@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core import serializers
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views import generic
 from django.views.generic import View
-from .forms import UserForm
+from .forms import *
 from las.models import *
 import json
 
 # Create your views here.
 def index(request):
+  print(request.user)
   return render(request, 'las/index.html')
 
 def category(request):
@@ -33,28 +34,46 @@ def login(request):
 # testing
 
 class UserFormView(View):
-  form_class = UserForm
+#   form_class = UserForm
+  user_form = UserForm
+  profile_form = ProfileForm
   template_name = 'las/registration_form.html'
   
   def get(self, request):
-    form = self.form_class(None)
-    return render(request, self.template_name, {'form': form})
+#     form = self.form_class(None)
+#     return render(request, self.template_name, {'form': form})
+    userForm = self.user_form(None)
+    profileForm = self.profile_form(None)
+    return render(request, self.template_name, {'userform': userForm, 'profileform': profileForm})
   
   def post(self, request):
-    form = self.form_class(request.POST)
-    
-    if form.is_valid():
-      user = form.save(commit=False)
-      username = form.cleaned_data['username']
-      password = form.cleaned_data['password']
+    print(request.POST)
+    userForm = self.user_form(request.POST)
+    profileForm = self.profile_form(request.POST)
+    if (userForm.is_valid() and profileForm.is_valid()):
+      user = userForm.save(commit=False)
+      username = userForm.cleaned_data['username']
+      password = userForm.cleaned_data['password']
       user.set_password(password)
-      user.save()
+      print(user)
+#       user.save()
+    
+    return render(request, 'las/index.html')
+#     form = self.form_class(request.POST)
+    
+    
+#     if form.is_valid():
+#       user = form.save(commit=False)
+#       username = form.cleaned_data['username']
+#       password = form.cleaned_data['password']
+#       user.set_password(password)
+#       user.save()
       
-      user = authenticate(username=username, password=password)
+#       user = authenticate(username=username, password=password)
       
-      if user is not None:
-        if user.is_active:
-          login(request, user)
-          return redirect('las:index')
+#       if user is not None:
+#         if user.is_active:
+#           login(request, user)
+#           return redirect('las:index')
         
-    return render(request, self.template_name, {'form': form})
+#     return render(request, self.template_name, {'form': form})

@@ -41,11 +41,20 @@
         </div>
       </form> 
 
-      <form action="#" id="signup">
+      <form id="signup" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h1>Please fill out this form to create an account.</h1>
         <div class="input-field">
-          <label for="First Name">First Name *</label>
+          {% for field in form %}
+          <div class='form-group'>
+            <div class='col-sm-offset-2 col-sm-10'>
+              <span class='text-danger small'>{{ field.errors }}</span>
+            </div>
+            <label class='control-label col-sm-2'>{{ field.label_tag }}</label>
+            <div class='col-sm-10'>{{ field }}</div>
+          </div>
+          {% endfor %}
+<!--           <label for="First Name">First Name *</label>
           <input type="text" name="firstName" required>
           <label for="Last Name">Last Name *</label>
           <input type="text" name="lastName" required>
@@ -72,7 +81,7 @@
               <option value="13">Research</option>
               <option value="14">Sales</option>
             </select>
-          </div>
+          </div> -->
           <input type="submit" value="Sign Up" class="button"/>
         </div>
       </form>
