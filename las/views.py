@@ -19,6 +19,8 @@ def category(request):
   return render(request, 'las/category.html')
 
 def myCollections(request):
+  posts = Post.objects.filter(poster=request.user)
+  print(posts)
   return render(request, 'las/myCollections.html')
 
 def post_making(request):
