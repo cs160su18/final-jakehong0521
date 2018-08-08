@@ -4,23 +4,18 @@ from django.utils import timezone
 import datetime
 
 class Post(models.Model):
-#   field_choices = (
-#     ('N/A', 'N/A')
-#     ('Administration', 'administration'),
-#     ('Banking', 'banking')
-#   )
-  
   date = models.DateField(default=timezone.localdate())
   poster = models.ForeignKey(User, on_delete=models.CASCADE)
   content = models.TextField()
   
   def __str__(self):
-    return self.poster.username + ' on ' + self.date
+    return self.poster.username + ' on ' + self.date.__str__()
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=40)
   aboutMe = models.TextField(blank=True)
+  jobDescription = models.TextField(blank=True)
   star = models.IntegerField(default=0)
   company = models.CharField(max_length=40, blank=True)
   field = models.TextField(choices=(
