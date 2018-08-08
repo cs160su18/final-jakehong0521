@@ -4,7 +4,7 @@ from django.utils import timezone
 import datetime
 
 class Post(models.Model):
-  date = models.DateField(default=timezone.localdate())
+  date = models.DateField(default=datetime.date.today())
   poster = models.ForeignKey(User, on_delete=models.CASCADE)
   content = models.TextField()
   

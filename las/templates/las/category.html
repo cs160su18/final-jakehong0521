@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
 
-    <script src="{% static '/las/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static '/las/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
 	</head>
 	
   <body>
@@ -26,139 +26,61 @@
       </div>
     </div>
     
-    <div class="row">
-      <div class="side"></div>
+    
+    
+    <div class="categories" style="display: flex; flex-wrap: wrap;">
+<!--       {% for field in fields %}
       <div class="item">
-        <a href="">
-          <div id='item'><br>Administration</div>
+        <a href="{% url 'search'%}">
+          <div id='item'>
+            {{ field }}
+          </div>
         </a>
       </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Banking</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Design</div>
-        </a>
-      </div>
-      <div class="side"></div>
+      {% endfor %} -->
+      
+      {% for field in fields %}
+      {% if field != 'N/A' %}
+      <form action="{% url 'search'%}" method="post">
+        {% csrf_token %}
+        <input type='submit' name="field" value="{{ field }}">
+      </form>
+      {% endif %}
+      {% endfor %}
     </div>
-    <div class="row">
-      <div class="side"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Education</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-      <a href="">
-          <div id='item'><br>Engineering</div>
-        </a></div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Entrepreneur</div>
-        </a>
-      </div>
-      <div class="side"></div>
-    </div>
-    <div class="row">
-      <div class="side"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Government</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Health</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Legal</div>
-        </a>
-      </div>
-      <div class="side"></div>
-    </div>
-    <div class="row">
-      <div class="side"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Media</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Research</div>
-        </a>
-      </div>
-      <div class="between"></div>
-      <div class="item">
-        <a href="">
-          <div id='item'><br>Sales</div>
-        </a>
-      </div>
-      <div class="side"></div>
-    </div>
+    
+    <script></script>
     
     <style>
       body {
         font-family: Arial;
         font-size: 40px;
-        vertical-align: center;
         background-color: #F9F9F9;
       }
       
-      a {
-        height: 100%;
-        text-decoration: none;
-      }
-      
-      #item:hover {
+      input:hover {
         background-color: #cccccc;
       }
       
-      .row {
-        display: flex;
-        flex-direction: row;
-        height: 200px;
-        
-      }
-      
-      .side {
-        flex: 2;
-      }
-      
-      .between {
-        flex: 1;
-      }
-      
-      .item {
-        margin-top: 20px;
-        flex: 5;
+      input {
+        font-size: 30px;
+        background-color: white;
+        height: 100px;
+        margin: 20px;
+        width: 100%;
         border-style: solid;
         border-width: 5px;
-        border-color: #FD5F00;
+        border-color: #ffe0b2;
         border-radius: 10px;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: center;
       }
       
-      #item {
-        width: 100%;
-        height: 100%;
-        background-color: white;
+      form {
+        margin: 20px;
+        height: 100px;
+        width: 30%;
       }
-      
     </style>
     
     <script>

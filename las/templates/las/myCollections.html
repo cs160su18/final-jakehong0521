@@ -67,26 +67,18 @@
     </div>
 
     <div class="posts" style="display:flex; flex-wrap: wrap;">
+      {% for post in posts %}
       <div id="one">
-        <h1>08/05/2018</h1>
-        <h3>asdasada<br>asdasada<br>asdasada<br></h3>
+        <div id="text">
+          <h1>{{ post.date }}</h1>
+          <span>
+            {{ post.content|safe|truncatechars:'90' }}
+            <a href="../{{ post.pk }}">read more</a>
+          </span>
+        </div>
       </div>
-      <div id="one">
-        <h1>08/04/2018</h1>
-        <h3>asdasada<br>asdasada<br>asdasada<br></h3>
-      </div>
-      <div id="one">
-        <h1>08/03/2018</h1>
-        <h3>asdasada<br>asdasada<br>asdasada<br></h3>
-      </div>
-      <div id="one">
-        <h1>08/02/2018</h1>
-        <h3>asdasada<br>asdasada<br>asdasada<br></h3>
-      </div>
-      <div id="one">
-        <h1>08/01/2018</h1>
-        <h3>asdasada<br>asdasada<br>asdasada<br></h3>
-      </div>
+      {% endfor %}
+      
     </div>
     
     <div class='button'>
@@ -102,13 +94,17 @@
 
       .posts #one {
         margin: 60px 15px;
-        display:inline-block;
-        width:250px;
+        display: inline-block;
+        width: 250px;
         border-style: solid;
         border-width: 5px;
-        border-color: #FD5F00;
+        border-color: #ffe0b2;
         border-radius: 10px;
-        text-align:center;
+        text-align: left;
+      }
+      
+      #text {
+        margin-left: 10px;
       }
 
       .button .add-button {

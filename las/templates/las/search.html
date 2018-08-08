@@ -31,18 +31,34 @@
       <input type="text" placeholder="Search...">
       <button type="submit" onclick="location.href='../search/'"><i class="fa fa-search"></i>Search</button>
       
+      {% for profile in profiles %}
       <section id="feature">
         <div id="second">
           <div style="float:left; width: 40%; height:100%">
-            <img src="https://lh3.googleusercontent.com/igsAgts4NCiWjewagOFo4eymGWNnklXLCeB_J-wm1G2sbFwNlU2evIXgOegSjbQrCrT3RHE=s85" style="width: 100%;">
+            <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 200px;">
           </div>
           <div style="float: right; width: 60%;">
-            <h3>Kevin Bacon</h3>
-            <h4>Software Engineer <br>Google</h4>
+            <h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
+            <h4>{{ profile.title }} <br>{{ profile.company }}</h4>
           </div>
         </div>
       </section>
+      {% endfor %}
       
+    </div>
+    
+    <div class="profiles" style="display:flex; flex-wrap: wrap;">
+      {% for profile in profiles %}
+      <div id="one">
+        <div id="text">
+          <h1>{{ post.date }}</h1>
+          <span>
+            {{ post.content|safe|truncatechars:'90' }}
+            <a href="../{{ post.pk }}">read more</a>
+          </span>
+        </div>
+      </div>
+      {% endfor %}
     </div>
     
     <style>

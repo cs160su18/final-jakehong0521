@@ -16,26 +16,20 @@ def index(request):
   return render(request, 'las/index.html')
 
 def category(request):
-  return render(request, 'las/category.html')
+  fields = []
+  for field in Profile._meta.get_field('field').choices:
+    fields.append(field[1])
+  return render(request, 'las/category.html', {'fields': fields})
 
 def myCollections(request):
-  posts = Post.objects.filter(poster=request.user)
-  print(posts)
-  return render(request, 'las/myCollections.html')
+  posts = Post.objects.filter(poster=request.user).order_by('-date')
+  return render(request, 'las/myCollections.html', {'posts': posts})
 
 def post_making(request):
   print(request.POST)
   if request.method == "POST":
-#     body_unicode = request.body.decode('utf-8')
-#     body = json.loads(body_unicode)
-    print('#####################')
-    print(request.POST['content'])
-    print(request.user)
-    print('post_making request received')
     post = Post(poster=request.user, content=request.POST['content'])
     post.save()
-    print(post.pk)
-    print('#####################')
     postid = post.pk
     return HttpResponse('../' + str(post.pk))
   else:
@@ -44,13 +38,16 @@ def post_making(request):
 def post(request, post_id):
   post = Post.objects.get(pk=post_id)
   poster = post.poster
+  print(poster.profile.field)
   return render(request, 'las/post.html', {'post': post, 'poster': poster})
   
 def guide(request):
   return render(request, 'las/guide.html')
 
 def search(request):
-  return render(request, 'las/search.html')
+  print(request.POST['field'])
+  profiles = Profile.objects.filter(field=request.POST['field'].lower())
+  return render(request, 'las/search.html', {'profiles': profiles})
 
 def signup(request):
   userForm = UserForm(request.POST)
