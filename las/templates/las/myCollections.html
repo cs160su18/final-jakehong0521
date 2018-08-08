@@ -13,11 +13,11 @@
   <body>
     <div class="navigator">
       {% if user.is_authenticated %}
-        <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
+        <a href="{% url 'logout_view' %}">Log Out</a>
+        <a href="{% url 'myCollections' %}" class ="active">{{ user.first_name }}'s Collections</a>
       {% else %}
         <a href="{% url 'signinup' %}">Sign Up / Login</a>
       {% endif %}
-      <a href="{% url 'myCollections' %}">My Collections</a>
       <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>
       <div id="logo">
@@ -27,13 +27,13 @@
   
     <div class="main" style="display: flex;">
       <div id="pic" style="float:left; margin: 10px; flex: 2">
-        <img src="{% static 'css/bacon.jpg' %}" style="width:100%">
+        <img src="{% static 'css/default.jpg' %}" style="width: 100%; border-radius: 1000px">
       </div>
       <div id="content" style="display:flex; flex-direction:column; flex: 8;">
         <div id="top" style="display: flex; flex-direction: row; flex: 1">
           <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
-            <h1>Kevin Bacon</h1>
-            <h3>Software Engineer-Google</h3>
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <h3>{{ user.profile.title }} at {{ user.profile.company }}</h3>
           </div>
           
           <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
@@ -43,7 +43,7 @@
               <div id='empty' style="flex: 1"></div>
               <div id="star" style="flex: 1; background-color: #F9F9F9; margin: 10px">
                 <img src="{% static 'css/star.jpg' %}" style="height: 22px; vertical-align: middle">
-                <span>13000</span>
+                <span>{{ user.profile.star }}</span>
               </div>
               <div id="following" style="flex: 1; background-color: #F9F9F9; margin: 10px;">Following</div>
             </div>
@@ -52,12 +52,15 @@
         
         <div id="bottom" style="display:flex; flex-direction: row; flex: 1">
           <div id="description" style="flex: 2; border-style: solid; background-color: #F9F9F9; color: black; margin: 10px;">
-            <h1>Job Description</h1>
+            <h2>Job Description</h2>
             <h3>I am a full stack developer, primarily working on auto-driving cars.</h3>
           </div>
-          <div id='me' style="flex: 2;border-style: solid; background-color: #F9F9F9; color:black; margin: 10px;">
-            <h1>About Me</h1>
-            <h3>I love telling others about what I do and I enjoy writing in my diary to straighten out my thoughts for that day.</h3>
+          <div id='me' style="flex: 2; border-style: solid; background-color: #F9F9F9; color: black; margin: 10px;">
+            <h2>About Me</h2>
+            <div class="aboutme">
+              {{ user.profile.aboutMe|safe|truncatewords:"20" }}
+              <a href="{{ url_for_full_content }}">read more</a>
+            </div>
           </div>
         </div>
       </div>
@@ -84,44 +87,44 @@
         <h1>08/01/2018</h1>
         <h3>asdasada<br>asdasada<br>asdasada<br></h3>
       </div>
-     
-  <div class='button'>
-     <button type="button" class="add-button"> + </button>
-  </div>
-  </div>
+  
+      <div class='button'>
+        <button type="button" class="add-button" onclick="location.href='../post_making'"> + </button>
+      </div>
+    </div>
 
-  <style type="text/css">
-    .main {
-      background-color:#113A5D;
-      width:100%;
-      margin:0;
-    }
-    
-    .posts #one {
-      margin: 60px 15px;
-      display:inline-block;
-      width:250px;
-      border-style: solid;
-      border-width: 5px;
-      border-color: #FD5F00;
-      border-radius: 10px;
-      text-align:center;
-    }
-    
-    .button .add-button {
-      height: 70px;
-      width: 70px;
-      padding: 10px;
-      border-radius:50%;
-      color:black;
-      border-width:thick;
-    }
-    
-    .button {
-      position:fixed;
-      bottom: 70px;
-      right:70px;
-    }
-  </style>
-</body>
+    <style type="text/css">
+      .main {
+        background-color:#113A5D;
+        width:100%;
+        margin:0;
+      }
+
+      .posts #one {
+        margin: 60px 15px;
+        display:inline-block;
+        width:250px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FD5F00;
+        border-radius: 10px;
+        text-align:center;
+      }
+
+      .button .add-button {
+        height: 70px;
+        width: 70px;
+        padding: 10px;
+        border-radius:50%;
+        color:black;
+        border-width:thick;
+      }
+
+      .button {
+        position:fixed;
+        bottom: 70px;
+        right:70px;
+      }
+    </style>
+  </body>
 </html>

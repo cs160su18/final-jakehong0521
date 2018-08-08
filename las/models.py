@@ -4,6 +4,12 @@ from django.utils import timezone
 import datetime
 
 class Post(models.Model):
+#   field_choices = (
+#     ('N/A', 'N/A')
+#     ('Administration', 'administration'),
+#     ('Banking', 'banking')
+#   )
+  
   date = models.DateField(default=timezone.localdate())
   poster = models.ForeignKey(User, on_delete=models.CASCADE)
   content = models.TextField()
@@ -14,9 +20,24 @@ class Post(models.Model):
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=40)
-  aboutMe = models.TextField()
+  aboutMe = models.TextField(blank=True)
   star = models.IntegerField(default=0)
   company = models.CharField(max_length=40, blank=True)
+  field = models.TextField(choices=(
+    ('N/A', 'N/A'),
+    ('administration', 'Administration'),
+    ('banking', 'Banking'),
+    ('design', 'Design'),
+    ('education', 'Education'),
+    ('engineering', 'Engineering'),
+    ('entrepreneur', 'Entrepreneur'),
+    ('government', 'Government'),
+    ('health', 'Health'),
+    ('legal', 'Legal'),
+    ('media', 'Media'),
+    ('research', 'Research'),
+    ('sales', 'Sales')
+  ), default='N/A')
   
   def __str__(self):
     return self.user.username + ' is ' + self.title

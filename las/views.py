@@ -20,8 +20,17 @@ def myCollections(request):
   return render(request, 'las/myCollections.html')
 
 def post_making(request):
-  return render(request, 'las/posting.html')
+  if request.method == "POST":
+    print('post request received')
+  else:
+    return render(request, 'las/post_making.html')
 
+def post(request):
+  if request.method == "POST":
+    print('post request received')
+  else:
+    return render(request, 'las/post.html')
+  
 def guide(request):
   return render(request, 'las/guide.html')
 

@@ -12,11 +12,11 @@
   <body>
     <div class="navigator">
       {% if user.is_authenticated %}
-        <a href="{% url 'logout_view' %}">{{ user.username }}<br>Log Out</a>
+        <a href="{% url 'logout_view' %}">Log Out</a>
+        <a href="{% url 'myCollections' %}">{{ user.first_name }}'s Collections</a>
       {% else %}
         <a href="{% url 'signinup' %}">Sign Up / Login</a>
       {% endif %}
-      <a href="{% url 'myCollections' %}">My Collections</a>
       <a href="{% url 'category' %}">Category</a>
       <a href="{% url 'guide' %}">User Guide</a>
       <div id="logo">
