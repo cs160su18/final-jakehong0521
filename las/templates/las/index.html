@@ -33,8 +33,11 @@
         what's your story?
       </h3>
 
-      <input type="text" placeholder="Search by career fields...">
-      <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
+      <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name='field' placeholder="Search by career fields...">
+        <button type="submit" onclick="location.href='search/'"><i class="fa fa-search"></i>Search</button>
+      </form>
     </div>
   
     <section id="feature">
