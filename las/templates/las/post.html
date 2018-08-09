@@ -56,25 +56,20 @@
         var text = text.replace(/&lt;/g, "<");
         var text = text.replace(/&gt;/g, ">");
         wrapper.insertAdjacentHTML('afterbegin', text);
+
+        var poster = "{{ poster }}";
+        var user = "{{ user }}"
+        
+        var strongs = document.getElementsByTagName('strong');
+        if (poster != user) {
+          console.log('different');
+          for (var i = 0; i < strongs.length; i++) {
+            console.log(strongs[i]);
+            strongs[i].style.display = 'none';
+          }
+        }        
       });
       
-//       $(window).on('load', function() {
-//         var wrapper = document.getElementById('post');
-//         var text = wrapper.innerHTML;
-//         wrapper.innerHTML = '';
-//         var text = text.replace(/&lt;/g, "<");
-//         var text = text.replace(/&gt;/g, ">");
-//         wrapper.insertAdjacentHTML('afterbegin', text);
-        
-//         console.log('qwer');
-//         var poster = "{{ poster }}";
-//         console.log('poster');
-//         if (poster != {{ user }}) {
-//           var u = $('u');
-//           console.log('asdf');
-//           $('u').hide();
-//         };
-//       });
     </script>
     
     <style>
@@ -99,8 +94,9 @@
         border-radius: 10px;
         background-color:white;
       }
+      
       .user{
-        background-color:#113A5D;
+        background-color: #42a5f4;
         width:100%;
       }
     </style>
