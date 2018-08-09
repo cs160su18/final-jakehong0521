@@ -12,11 +12,6 @@ import json
 
 # Create your views here.
 def index(request):
-  if (request.user.is_active):
-    print('index view with ' + request.user.__str__())
-    print(request.user.profile.followers.all())
-  else:
-    print('not logged in')
   if (request.method == 'POST'):
     print(request.POST['field'])
     profiles = Profile.objects.filter(field=request.POST['field'].lower())
@@ -36,6 +31,7 @@ def category(request):
     return render(request, 'las/category.html', {'fields': fields})
 
 def myCollections(request):
+  print(request.user.profile.followers.all())
   posts = Post.objects.filter(poster=request.user).order_by('-date')
   return render(request, 'las/myCollections.html', {'posts': posts})
 
