@@ -12,7 +12,11 @@ import json
 
 # Create your views here.
 def index(request):
-  print('index view with ' + request.user.__str__())
+  if (request.user.is_active):
+    print('index view with ' + request.user.__str__())
+    print(request.user.profile.followers.all())
+  else:
+    print('not logged in')
   if (request.method == 'POST'):
     print(request.POST['field'])
     profiles = Profile.objects.filter(field=request.POST['field'].lower())
@@ -41,6 +45,7 @@ def otherCollections(request):
 def post_making(request):
   print(request.POST)
   if request.method == "POST":
+    print(request.POST['content'])
     post = Post(poster=request.user, content=request.POST['content'])
     post.save()
     postid = post.pk

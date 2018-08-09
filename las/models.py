@@ -13,6 +13,7 @@ class Post(models.Model):
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
+  followers = models.ManyToManyField('self', blank=True, symmetrical=False)
   title = models.CharField(max_length=40)
   aboutMe = models.TextField(blank=True)
   jobDescription = models.TextField(blank=True)
