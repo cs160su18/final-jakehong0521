@@ -14,7 +14,7 @@
     <div class="navigator">
       {% if user.is_authenticated %}
         <a href="{% url 'logout_view' %}">Log Out</a>
-        <a href="{% url 'myCollections' %}" class ="active">{{ user.first_name }}'s Collections</a>
+        <a href="{% url 'myCollections' %}">{{ user.first_name }}'s Collections</a>
       {% else %}
         <a href="{% url 'signinup' %}">Sign Up / Login</a>
       {% endif %}
@@ -32,8 +32,8 @@
       <div id="content" style="display:flex; flex-direction:column; flex: 8;">
         <div id="top" style="display: flex; flex-direction: row; flex: 1">
           <div id="name" style="flex: 1; color: white; margin: 10px; text-align: left;">
-            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-            <h3>{{ user.profile.title }} at {{ user.profile.company }}</h3>
+            <h1>{{ poster.first_name }} {{ poster.last_name }}</h1>
+            <h3>{{ poster.profile.title }} at {{ poster.profile.company }}</h3>
           </div>
           
           <div id="extra" style="display: flex; flex-direction: column; flex: 1;">
@@ -43,7 +43,7 @@
               <div id='empty' style="flex: 1"></div>
               <div id="star" style="flex: 1; background-color: #F9F9F9; margin: 10px">
                 <img src="{% static 'css/star.jpg' %}" style="height: 22px; vertical-align: middle">
-                <span>{{ user.profile.star }}</span>
+                <span>{{ poster.profile.star }}</span>
               </div>
               <div id="following" style="flex: 1; background-color: #F9F9F9; margin: 10px;">Following</div>
             </div>
@@ -58,7 +58,7 @@
           <div id='me' style="flex: 2; border-style: solid; background-color: #F9F9F9; color: black; margin: 10px;">
             <h2>About Me</h2>
             <div class="aboutme">
-              {{ user.profile.aboutMe|safe|truncatewords:"20" }}
+              {{ poster.profile.aboutMe|safe|truncatewords:"20" }}
               <a href="{{ url_for_full_content }}">read more</a>
             </div>
           </div>
@@ -80,10 +80,6 @@
       {% endfor %}
     </div>
     
-    <div class='button'>
-      <button type="button" class="add-button" onclick="location.href='../post_making'">+</button>
-    </div>
-
     <style type="text/css">
       .main {
         background-color:#113A5D;
@@ -104,22 +100,6 @@
       
       #text {
         margin-left: 10px;
-      }
-
-      .button .add-button {
-        height: 70px;
-        width: 70px;
-        padding: 10px;
-        border-radius:50%;
-        color:black;
-        border-width:thick;
-        font-size: 40px;
-      }
-
-      .button {
-        position:fixed;
-        bottom: 70px;
-        right:70px;
       }
     </style>
   </body>

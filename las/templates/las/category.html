@@ -26,22 +26,10 @@
       </div>
     </div>
     
-    
-    
     <div class="categories" style="display: flex; flex-wrap: wrap;">
-<!--       {% for field in fields %}
-      <div class="item">
-        <a href="{% url 'search'%}">
-          <div id='item'>
-            {{ field }}
-          </div>
-        </a>
-      </div>
-      {% endfor %} -->
-      
       {% for field in fields %}
       {% if field != 'N/A' %}
-      <form action="{% url 'search'%}" method="post">
+      <form action="{% url 'category' %}" method="post">
         {% csrf_token %}
         <input type='submit' name="field" value="{{ field }}">
       </form>

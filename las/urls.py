@@ -12,6 +12,7 @@ urlpatterns = [
   path('signup/', views.signup, name='signup'),
   path('search/', views.search, name='search'),
   path('myCollections/', views.myCollections, name='myCollections'),
+  path('otherCollections/', views.otherCollections, name='otherCollections'),
 #   path('post/', views.post, name='post'),
   path('logout_view/', views.logout_view, name='logout_view'),
   url(r'^(?P<post_id>[0-9]+)$', views.post, name='post')

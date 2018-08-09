@@ -16,14 +16,22 @@ def index(request):
   return render(request, 'las/index.html')
 
 def category(request):
-  fields = []
-  for field in Profile._meta.get_field('field').choices:
-    fields.append(field[1])
-  return render(request, 'las/category.html', {'fields': fields})
+  if (request.method == 'POST'):
+    print(request.POST['field'])
+    profiles = Profile.objects.filter(field=request.POST['field'].lower())
+    return render(request, 'las/search.html', {'profiles': profiles})
+  else:
+    fields = []
+    for field in Profile._meta.get_field('field').choices:
+      fields.append(field[1])
+    return render(request, 'las/category.html', {'fields': fields})
 
 def myCollections(request):
   posts = Post.objects.filter(poster=request.user).order_by('-date')
   return render(request, 'las/myCollections.html', {'posts': posts})
+
+def otherCollections(request):
+  return render(request, 'las/myCollections.html')
 
 def post_making(request):
   print(request.POST)
@@ -45,9 +53,18 @@ def guide(request):
   return render(request, 'las/guide.html')
 
 def search(request):
-  print(request.POST['field'])
-  profiles = Profile.objects.filter(field=request.POST['field'].lower())
-  return render(request, 'las/search.html', {'profiles': profiles})
+  if (request.method=="POST"):
+    if (request.user.username == request.POST['user']):
+      posts = Post.objects.filter(poster=request.user).order_by('-date')
+      return render(request, 'las/myCollections.html', {'posts': posts})
+    else:
+      print('different')
+      poster = User.objects.get(username=request.POST['user'])
+      posts = Post.objects.filter(poster=poster).order_by('-date')
+      return render(request, 'las/otherCollections.html', {'posts': posts, 'poster': poster})
+  else:
+    print('get request at search')
+    return render(request, 'las/search.html')
 
 def signup(request):
   userForm = UserForm(request.POST)
