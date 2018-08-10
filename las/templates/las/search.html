@@ -7,9 +7,6 @@
 
     <script src="{% static '/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static '/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
-
-    <style type="text/css">
-    </style>
   </head>
 
   <body>
@@ -28,16 +25,23 @@
     </div>
     
     <div class="main">
-      <input type="text" placeholder="Search...">
-      <button type="submit" onclick="location.href='../search/'"><i class="fa fa-search"></i>Search</button>
+      <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name='field' placeholder="Search by career fields..."
+               style="height:100%; margin-left:15px; padding:15px 28px; box-shadow: 5px 5px 5px grey;font-size:15px;text-align:center;">
+        <button type="submit" onclick="location.href='search/'"
+                style="height:100%; margin-left:15px; padding:15px 28px; box-shadow: 5px 5px 5px grey;font-size:15px;text-align:center;">
+          <i class="fa fa-search"></i>Search
+        </button>
+      </form>
       
       <div id='container'>
         {% for profile in profiles %}
-        <form action="{% url 'search'%}" method="post">
+        <form id='form' action="{% url 'search'%}" method="post">
           {% csrf_token %}
           <div style="height: 100%; width: 40%; float: left;">
             <img src="{% static 'css/default.jpg' %}" style="height: 80%; width: 100%;">
-            <input class='button' type='submit' name="user" value="{{ profile.user }}">
+            <input id='button' class='button' type='submit' name="user" value="{{ profile.user }}">
           </div>
           <div style="height: 100%; width: 55%; float: right; text-align: left;">
             <h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
@@ -49,7 +53,7 @@
     </div>
     
     <style>
-      .button {
+      #button {
         border: solid #ffb84d;
         text-align: center;
         text-decoration: none;
@@ -63,6 +67,10 @@
         box-shadow: 10;
       }
       
+      body, html {
+        height:100%;
+      }
+      
       .main {
         text-align: center;
         padding-top: 100px;
@@ -72,7 +80,7 @@
         width:500px;
       }
       
-      form, #feature #second {
+      #form, #feature #second {
         margin: 60px 15px;
         display: inline-block;
         height: 120px;
