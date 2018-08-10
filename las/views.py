@@ -17,6 +17,7 @@ def index(request):
     profiles = Profile.objects.filter(field=request.POST['field'].lower())
     return render(request, 'las/search.html', {'profiles': profiles})
   else:
+#     profiles = Profile.objects.
     return render(request, 'las/index.html')
 
 def category(request):
